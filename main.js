@@ -69,7 +69,7 @@ $(document).ready(function(){
 	// $('.productContainer figure img').draggable({'disable'})
 	// $('.productContainer figure img').draggable({'enable'})
 
-	$('.productContainer figure img').on('mousedown', function() {
+	$('.productContainer figure img').on('mousedown ontouchmove', function() {
 			timeOut = setTimeout(function checkImgPosition() {
 				var position = $('.productContainer figure img').position()
 				// console.log(position.left)
@@ -99,5 +99,8 @@ $(document).ready(function(){
 			// }
 	// checkImgPosition();
 	})
+
+
+
 
 });
