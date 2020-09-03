@@ -82,6 +82,7 @@ a, h3, p,
 
 header {
 	margin-top: 50px;
+	z-index: 20;
 }
 
 

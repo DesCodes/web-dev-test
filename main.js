@@ -2,13 +2,14 @@ $(document).ready(function(){
 	// gives draggable funtion to the product img
 	$('.productContainer figure img').draggable({
 		axis: 'x', 
-		containment: '.wrapper',
+		containment: '.sectionContainer',
 		revert: true,
 	})
 
 
+
 			// animation for right arrow click and section click, circle2 (window width < 1350px)
-	$('.backgroundContainer section, .arrowRight, .circle2').on('click', function(){
+	$('.productContainer, .arrowRight, .circle2').on('click', function(){
 		function checkWidth() {
 		var windowSize = $(window).width();
 
@@ -33,6 +34,7 @@ $(document).ready(function(){
 			$('.interactiveSlider .circle1').css('color', '#616161')
 			$('.interactiveSlider .circle2').css('color', '#bfab7c')
 			$('.productContainer figure img').draggable('disable')
+			
 		}
 	}
 	checkWidth();
@@ -53,7 +55,7 @@ $(document).ready(function(){
 				$('.interactiveSlider .circle2').css('color', '#616161')
 				$('.interactiveSlider .circle1').css('color', '#bfab7c')
 				$('html, body').stop().animate({scrollTop: $('.productContainer').offset().top}, 2000, 'swing')
-				$('.productContainer figure img').draggable('enable')
+				// $('.productContainer figure img').draggable('enable')
 
 			} else {
 				// animation for left arrow click and circke1 click
@@ -89,9 +91,10 @@ $(document).ready(function(){
 						$('.interactiveSlider .circle2').css('color', '#bfab7c')
 						$('html, body').stop().animate({scrollTop: $('.descriptionContainer').offset().top}, 2000, 'swing')
 						$('.productContainer figure img').draggable('disable')
+						$('.descriptionContainer p').draggable({ axis: 'x', revert: true, containment:[0] });
+
 				} else {
 
-					console.log(position.left)
 					$('.productContainer figure img').fadeOut('fast').fadeIn('slow').draggable('disable')
 					$('.productContainer').animate({left: '38%'}, 'fast')
 					$('.productTitleContainer').animate({top: '23%'}, 'slow')
@@ -101,11 +104,30 @@ $(document).ready(function(){
 					$('.learnMore').hide()
 					$('.interactiveSlider .circle1').css('color', '#616161')
 					$('.interactiveSlider .circle2').css('color', '#bfab7c')
+					// $('.productContainer figure img').draggable('enable')
+					// $('.innerSection').draggable({axis: 'x', revert: true})
+
 				}
 			}
 		}, 200)
 	})
 
+
+	$('.descriptionContainer p').on('mousedown', function() {
+		timeOut = setTimeout(function() {
+			var position = $('.descriptionContainer p').position();
+
+			if(position.left > 0) {
+				$('.learnMore').show('swing')
+				$('.descriptionContainer p, .XMFitness').hide('slow')
+				$('.productTitleContainer').animate({top: '50%'}, 'slow')
+				$('.productContainer').animate({left: '0'}, 'slow')
+				$('.interactiveSlider .circle2').css('color', '#616161')
+				$('.interactiveSlider .circle1').css('color', '#bfab7c')
+				$('.productContainer figure img').draggable('enable')
+			}
+		}, 200)
+	})
 
 
 });
