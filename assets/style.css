@@ -99,6 +99,7 @@ nav ul li a {
 
 nav ul li a:hover {
 	color: #bfab7c;
+	border-bottom: 10px solid;
 }
 
 section {
@@ -145,8 +146,9 @@ h3 .XMFitness {
 }
 
 span.learnMore:hover {
-	color: #bfab7c;
-	text-decoration: underline;
+/*	color: #bfab7c;
+	text-decoration: underline;*/
+	font-weight: 700;
 }
 
 .productContainer {
@@ -189,7 +191,8 @@ span.learnMore:hover {
 	cursor: pointer;
 }
 
-.interactiveSlider i:hover {
+.interactiveSlider i:hover,
+.interactiveSlider span i:hover {
 	color: #bfab7c;
 }
 

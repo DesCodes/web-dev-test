@@ -52,12 +52,52 @@ $(document).ready(function(){
 				$('.productContainer').animate({left: '0'}, 'slow')
 				$('.interactiveSlider .circle2').css('color', '#616161')
 				$('.interactiveSlider .circle1').css('color', '#bfab7c')
+				$('.productContainer figure img').draggable('enable')
 			}
 		}
 		checkWidth();
 	});
 
+	$('.productContainer figure img').draggable({
+		axis: 'x', 
+		containment: '.wrapper',
+		revert: true,
+	})
+	// fade to left, reapear on the right side and fade in
+	// on drag, auto fade away when img reaches left: -350px
 
-	
+	// $('.productContainer figure img').draggable({'disable'})
+	// $('.productContainer figure img').draggable({'enable'})
+
+	$('.productContainer figure img').on('mousedown', function() {
+			timeOut = setTimeout(function checkImgPosition() {
+				var position = $('.productContainer figure img').position()
+				// console.log(position.left)
+
+				if(position.left < -340) {
+					console.log(position.left)
+					$('.productContainer figure img').fadeOut('fast')
+					// $('.productContainer figure img').css('left', '38%')
+					$('.productContainer').animate({left: '38%'}, 'fast')
+					$('.productTitleContainer').animate({top: '23%'}, 'slow')
+					$('.descriptionContainer p, .XMFitness').show('swing')
+					$('.descriptionContainer p').animate({opacity: '1'}, 'slow')
+					$('.descriptionContainer').css('width', '450px')
+					$('.learnMore').hide()
+					$('.interactiveSlider .circle1').css('color', '#616161')
+					$('.interactiveSlider .circle2').css('color', '#bfab7c')
+					$('.productContainer figure img').fadeIn('slow')
+					$('.productContainer figure img').draggable('disable')
+				}
+			}, 200).on('mouseup', function() {
+				clearTimeout(timeOut)
+			})
+
+			// function checkImgPosition() {
+			// 	var position = $('.productContainer figure img').position()
+			// 	console.log(position.left)
+			// }
+	// checkImgPosition();
+	})
 
 });
